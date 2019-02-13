@@ -45,6 +45,7 @@ Session.vim
 .serverless
 
 # env
+env.example
 env.yml
 .env
 

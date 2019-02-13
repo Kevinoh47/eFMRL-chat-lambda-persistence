@@ -1,4 +1,18 @@
-# Serverless Node.js Starter
+# eFMRL Chat Persistence Layer
+
+eFMRL is a Socket.io chat application using React & React Native based clients and AWS infrastructure for both the server layer and the persistence layer.
+
+
+![Architectural Diagram](./resources/system-architecture-diagram.jpg)
+
+
+## via DynamoDB, serverless Lambda functions, and routes exposed via AWS API Gateway
+
+This implementation follows this tutorial: https://serverless-stack.com 
+
+
+
+## Serverless Node.js Starter
 
 A Serverless starter that adds ES7 syntax, serverless-offline, environment variables, and unit test support. Part of the [Serverless Stack](http://serverless-stack.com) guide.
 

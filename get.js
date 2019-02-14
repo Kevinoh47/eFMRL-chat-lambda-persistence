@@ -6,7 +6,7 @@ export async function main(event, context) {
   console.log({event});
   
   const params = {
-    TableName: "chatmessages",
+    TableName: process.env.messagesTable,
     Key: {
       room: event.pathParameters.room,
       messageId: event.pathParameters.id

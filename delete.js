@@ -3,7 +3,7 @@ import { success, failure } from "./libs/response-lib";
 
 export async function main(event, context) {
   const params = {
-    TableName: "chatmessages",
+    TableName: process.env.messagesTable,
     // 'Key' defines the partition key and sort key of the item to be removed
     Key: {
       room: event.pathParameters.room,

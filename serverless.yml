@@ -125,11 +125,14 @@ resources:
         Properties:
           AttributeDefinitions:
             - 
-              AttributeName: memoId
+              AttributeName: room
+              AttributeType: S
+            -
+              AttributeName: messageId
               AttributeType: S
           KeySchema:
             - 
-              AttributeName: memoId
+              AttributeName: room
               KeyType: HASH
           ProvisionedThroughput:
             ReadCapacityUnits: 1

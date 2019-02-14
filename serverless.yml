@@ -9,6 +9,7 @@ plugins:
 # serverless-webpack configuration
 # Enable auto-packing of external modules
 custom:
+  tableName: '${self:service}-${self:provider.stage}'
   webpack:
     webpackConfig: ./webpack.config.js
     includeModules: true
@@ -17,13 +18,14 @@ provider:
   name: aws
   runtime: nodejs8.10
   stage: dev
-  region: us-east-1
+  region: us-east-2
   # To load environment variables externally
   # rename env.example to env.yml and uncomment
   # the following line. Also, make sure to not
   # commit your env.yml.
   #
-  #environment: ${file(env.yml):${self:provider.stage}}
+  environment: 
+    messagesTable:  ${self:custom.tableName}
 
   iamRoleStatements:
     - Effect: Allow
@@ -35,7 +37,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:us-east-1:*:*"
+      Resource: "arn:aws:dynamodb:us-east-2:*:*"
 
 functions:
   # Defines an HTTP API endpoint that calls the main function in create.js
@@ -117,6 +119,22 @@ functions:
 
 # Create our resources with separate CloudFormation templates
 resources:
+  Resources:
+      ChatMessagesTable:
+        Type: 'AWS::DynamoDB::Table'
+        Properties:
+          AttributeDefinitions:
+            - 
+              AttributeName: memoId
+              AttributeType: S
+          KeySchema:
+            - 
+              AttributeName: memoId
+              KeyType: HASH
+          ProvisionedThroughput:
+            ReadCapacityUnits: 1
+            WriteCapacityUnits: 1
+          TableName: ${self:custom.tableName}
   # API Gateway Errors
   - ${file(resources/api-gateway-errors.yml)}
 

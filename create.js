@@ -7,14 +7,14 @@ export async function main(event, context) {
   const data = JSON.parse(event.body);
 
   const params = {
-    TableName: "chatmessages",
+    TableName: process.env.messagesTable,
     Item: {
       messageId: uuid.v1(),
       room: data.room,
       moniker: data.moniker,
-      content: data.content,
+      message: data.message,
       attachment: data.attachment,
-      timestamp: data.timestamp //Date.now()
+      timestamp: Date.now()
     }
   };
 

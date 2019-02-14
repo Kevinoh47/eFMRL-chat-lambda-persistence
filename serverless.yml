@@ -98,7 +98,7 @@ functions:
     handler: update.main
     events:
       - http:
-          path: messages/{id}
+          path: chatmessages/{id}
           method: put
           cors: true
           # authorizer: aws_iam
@@ -110,7 +110,7 @@ functions:
     handler: delete.main
     events:
       - http:
-          path: messages/{id}
+          path: chatmessages/{id}
           method: delete
           cors: true
           # authorizer: aws_iam

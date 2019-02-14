@@ -12,9 +12,9 @@ export async function main(event, context) {
       messageId: uuid.v1(),
       room: data.room,
       moniker: data.moniker,
-      content: data.content,
+      content: data.message,
       attachment: data.attachment,
-      timestamp: data.timestamp //Date.now()
+      timestamp: Date.now()
     }
   };
 

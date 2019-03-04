@@ -11,7 +11,10 @@ export async function main(event, context) {
     KeyConditionExpression: "room = :room",
     ExpressionAttributeValues: {
       ":room": event.queryStringParameters.room
-    }
+    },
+    IndexName: "room-timestamp-index",
+    Limit: 15,
+    ScanIndexForward: false
   };
 
   console.log({params});

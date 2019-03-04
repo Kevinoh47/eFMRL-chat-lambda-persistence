@@ -98,7 +98,8 @@ functions:
     handler: update.main
     events:
       - http:
-          path: chatmessages/{id}
+          #path: chatmessages/{id}
+          path: chatmessages/update
           method: put
           cors: true
           # authorizer: aws_iam
